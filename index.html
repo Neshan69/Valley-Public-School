@@ -1,0 +1,719 @@
+<!DOCTYPE html><html class="scroll-smooth dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Valley Public School - Official Portal</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Google Fonts: Inter & Plus Jakarta Sans with Apple SF Pro feel -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=SF+Pro+Display:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script>
+    tailwind.config = { darkMode: 'class' };
+</script>
+<style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      letter-spacing: -0.011em;
+    }
+
+    .page-tab-content {
+      display: none;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1), transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .page-tab-content.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-200 min-h-screen flex flex-col selection:bg-blue-600 selection:text-white pb-20 md:pb-0">
+<!-- ================= TOP TICKER BANNER (Cupertino Notification Pill Style) ================= -->
+
+<!-- ================= APPLE BLURRED FLOATING HEADER ================= -->
+<header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors shadow-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+<!-- Brand Logo & Motto -->
+<a class="flex items-center gap-3 group" href="/" onclick="event.preventDefault(); switchPage('home')">
+<div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-700 text-white flex items-center justify-center font-extrabold shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform flex-shrink-0">
+<i class="w-6 h-6 text-amber-300" data-lucide="graduation-cap"></i>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-extrabold text-base sm:text-xl text-blue-900 dark:text-blue-100 tracking-tight leading-tight">Valley Public School</span>
+<span class="hidden sm:inline-block text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950/80 dark:text-blue-300 border border-blue-200 dark:border-blue-800">Estd. 2052 B.S.</span>
+</div>
+<span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Lamatar, Lalitpur • <em>"Love, Honesty and Service"</em></span>
+</div>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center gap-1 lg:gap-2">
+<button class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/40" data-nav-target="home" onclick="switchPage('home')">
+          Home
+        </button>
+<button class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-nav-target="about" onclick="switchPage('about')">
+          About Us
+        </button>
+<button class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-nav-target="gallery" onclick="switchPage('gallery')">
+          Campus Gallery
+        </button>
+<button class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-nav-target="contacts" onclick="switchPage('contacts')">
+          Contact &amp; Visit
+        </button>
+</nav>
+<!-- Header Right Action Tools -->
+<div class="flex items-center gap-2 sm:gap-3">
+<!-- Direct Quick Call Hotline -->
+<a class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" href="tel:015580355">
+<i class="w-3.5 h-3.5 text-emerald-600" data-lucide="phone-call"></i>
+<span class="">01-5580355</span>
+</a>
+<!-- Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark Mode" class="p-2 sm:p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" id="themeToggleBtn" onclick="toggleTheme()">
+<i class="w-5 h-5 hidden dark:block text-amber-400" data-lucide="sun"></i>
+<i class="w-5 h-5 block dark:hidden text-slate-700" data-lucide="moon"></i>
+</button>
+<!-- Quick Admissions CTA on Desktop -->
+<button class="hidden lg:flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-white bg-blue-700 hover:bg-blue-800 active:scale-95 transition-all shadow-sm shadow-blue-700/20" onclick="switchPage('contacts')">
+<span class="">Apply / Visit</span>
+<i class="w-4 h-4" data-lucide="arrow-right"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- ================= LIVE BANNER TICKER ================= -->
+<div class="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-800 text-white text-xs py-2 px-4 shadow-inner">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-2 overflow-hidden whitespace-nowrap">
+<span class="bg-amber-400 text-blue-950 font-black px-2 py-0.5 rounded text-[10px] uppercase tracking-wider flex-shrink-0 animate-pulse">Notice</span>
+<p class="truncate font-medium text-blue-50 text-[11px] sm:text-xs">
+          Contact the school for current admissions and campus-visit information.
+        </p>
+</div>
+<button class="hidden md:inline-flex text-[11px] font-bold underline hover:text-amber-300 ml-4 flex-shrink-0" onclick="switchPage('contacts')">
+        Inquire Now →
+      </button>
+</div>
+</div>
+<!-- ================= MAIN APP CONTAINER ================= -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+<!-- ========================================================================= -->
+<!-- 1. HOME SCREEN SECTION                                                    -->
+<!-- ========================================================================= -->
+<section class="page-tab-content active space-y-12" id="page-home">
+<!-- HERO LANDING SECTION (Featuring Provided School Building Image) -->
+<div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 min-h-[460px] sm:min-h-[520px] flex items-end">
+<!-- Building Image as Background -->
+<div class="absolute inset-0 z-0">
+<img alt="Valley Public School Building in Lamatar Lalitpur" class="w-full h-full object-cover object-center filter brightness-95" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPFUFlgXe-2XzLjygDGYP_CCXBRBu4gGoqJNBQu3oYrZ4VN9No4oe6lRWmRmSXpGfRvccpa4YOTE0Psrn4aWYt6NLGIX1KM0oIrUG2phMFJjjG3Q3EfTadJn45fcFClClp_8L40qdAzOtbPwi-G8hKwc-jwRCQegd-0Mxj0JDRoVfTfYdMpiKo6DJd3ASaSX8pa0FpXhcJdQQ9ThpCxE37TiVfJP6qp6IZgr1Psww0b73zO7shHUU8kg">
+<!-- Multi-gradient scrim for legibility -->
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/70 to-slate-900/30"></div>
+<div class="absolute inset-0 bg-blue-950/40 mix-blend-multiply"></div>
+</div>
+<!-- Hero Content Overlay -->
+<div class="relative z-10 p-6 sm:p-10 lg:p-12 text-white max-w-3xl space-y-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/90 text-slate-950 backdrop-blur-md">
+<i class="w-3.5 h-3.5" data-lucide="compass"></i>
+<span class="">Motto: "Love, Honesty and Service"</span>
+</span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-white/20 text-white backdrop-blur-md">
+<i class="w-3.5 h-3.5 text-amber-300" data-lucide="calendar"></i>
+<span class="">Estd. 2052 B.S. (1996 A.D.)</span>
+</span>
+</div>
+<h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            Nurturing Minds, Building Character in the Heart of the Valley
+          </h1>
+<p class="text-sm sm:text-base text-slate-200 font-normal leading-relaxed">
+            English Medium Co-Ed Secondary School nestled at the peaceful foothills of Lamatar, Lalitpur. Away from urban congestion, offering a joyful sanctuary where academic distinction and moral integrity flourish together.
+          </p>
+<div class="flex items-center gap-2 text-xs sm:text-sm text-slate-300">
+<i class="w-4 h-4 text-rose-400 flex-shrink-0" data-lucide="map-pin"></i>
+<span class="">Mahalaxmi Municipality Ward No. 9, Lamatar, Lalitpur, Bagmati Province</span>
+</div>
+<!-- Hero Action Buttons -->
+<div class="pt-2 flex flex-col sm:flex-row gap-3">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-amber-400 text-slate-950 hover:bg-amber-300 active:scale-95 transition-all shadow-lg shadow-amber-400/20" onclick="switchPage('contacts')">
+<i class="w-4 h-4" data-lucide="clipboard-check"></i>
+<span class="">Admissions enquiries</span>
+</button>
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-slate-900/60 hover:bg-slate-900/80 text-white backdrop-blur-md border border-slate-700/60 active:scale-95 transition-all" onclick="switchPage('about')">
+<span class="">Read Our Story</span>
+<i class="w-4 h-4" data-lucide="arrow-right"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- KEY METRICS CARDS -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center flex-shrink-0">
+<i class="w-6 h-6" data-lucide="shield-check"></i>
+</div>
+<div>
+<div class="text-2xl font-black text-slate-900 dark:text-white">Nearly 3</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Decades Care (Estd. 2052)</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center flex-shrink-0">
+<i class="w-6 h-6" data-lucide="award"></i>
+</div>
+<div>
+<div class="text-2xl font-black text-slate-900 dark:text-white">100%</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 font-medium">SEE Board Pass Rate</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center flex-shrink-0">
+<i class="w-6 h-6" data-lucide="users"></i>
+</div>
+<div>
+<div class="text-2xl font-black text-slate-900 dark:text-white">1:15</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Student–Teacher Ratio</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0">
+<i class="w-6 h-6" data-lucide="activity"></i>
+</div>
+<div>
+<div class="text-2xl font-black text-slate-900 dark:text-white">Active</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Sports &amp; Culture Hub</div>
+</div>
+</div>
+</div>
+<!-- SECOND HOME WELCOME MESSAGE -->
+<div class="bg-gradient-to-br from-blue-50 to-indigo-50/60 dark:from-slate-900 dark:to-blue-950/40 p-6 sm:p-10 rounded-3xl border border-blue-100 dark:border-slate-800">
+<div class="max-w-3xl space-y-4">
+<div class="inline-flex items-center gap-2 text-xs font-bold text-blue-700 dark:text-blue-400 tracking-wider uppercase">
+<i class="w-4 h-4" data-lucide="heart-handshake"></i>
+<span class="">A Second Home in Lamatar</span>
+</div>
+<h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Where Every Child is Known by Heart
+          </h2>
+<p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            At Valley Public School, education is not just an academic curriculum — it is an extension of family. Set against the serene, refreshing hills of Lamatar, we believe in kindling curious minds with moral values, individualized care, and strong personal integrity.
+          </p>
+<div class="pt-2 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-blue-200 dark:bg-blue-800 flex items-center justify-center font-bold text-blue-900 dark:text-blue-100 text-lg">
+              GK
+            </div>
+<div>
+<p class="text-xs sm:text-sm italic font-medium text-slate-700 dark:text-slate-300">
+                “We teach children how to think, feel, and give back to our homeland with honesty and love.”
+              </p>
+<p class="text-xs font-bold text-blue-800 dark:text-blue-400 mt-0.5">
+                Gopal Krishna Shrestha • Executive Principal &amp; Management Board
+              </p>
+</div>
+</div>
+</div>
+</div>
+<!-- HALL OF ACCOMPLISHMENTS (From Building Frontage Photo Celebrations) -->
+<div class="space-y-6">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-950/60 px-2.5 py-0.5 rounded-full">Honors 2080–2081</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Front Banner Archive</span>
+</div>
+<h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mt-1">Hall of Accomplishments</h2>
+</div>
+<button class="text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1" onclick="switchPage('gallery')">
+<span class="">Explore Full Campus Gallery</span>
+<i class="w-4 h-4" data-lucide="arrow-right"></i>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1: Football -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col hover:-translate-y-1 transition-transform">
+<div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+<div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Lalitpur District Junior Football Cup</h3>
+<p class="text-xs text-slate-600 dark:text-slate-400 mt-1">U-14 Boys Team bagged the 1st prize championship trophy with undefeated gameplay.</p>
+</div>
+<div class="text-[11px] font-semibold text-amber-600 dark:text-amber-400 flex items-center gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+<i class="w-4 h-4" data-lucide="trophy"></i>
+<span class="">District Gold Medallists</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Folk Dance -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col hover:-translate-y-1 transition-transform">
+<div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+<div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Inter-School Folk Dance Competition</h3>
+<p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Celebrating rich Nepali heritage, Tamang Selo, and traditional choreographic brilliance.</p>
+</div>
+<div class="text-[11px] font-semibold text-purple-600 dark:text-purple-400 flex items-center gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+<i class="w-4 h-4" data-lucide="sparkles"></i>
+<span class="">Cultural Excellence Trophy</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Olympiad -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col hover:-translate-y-1 transition-transform">
+<div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+<div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Valley Talent &amp; Science Olympiad</h3>
+<p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Senior secondary students secured top distinction awards across mathematics &amp; robotics.</p>
+</div>
+<div class="text-[11px] font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+<i class="w-4 h-4" data-lucide="award"></i>
+<span class="">NEB District Distinction</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ACADEMIC LEVELS & FACILITIES SUMMARY -->
+<div class="space-y-6">
+<div class="text-center max-w-xl mx-auto space-y-1">
+<h2 class="text-2xl font-extrabold text-slate-900 dark:text-white">Academic Wings &amp; Facilities</h2>
+<p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Holistic growth from early kindergarten curiosity to high secondary SEE board success.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+<span class="text-2xl">🌱</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Pre-Primary Wing</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Playgroup to UKG with sensory play, loving caretakers, sunny playpens, and story circles.</p>
+</div>
+<div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+<span class="text-2xl">📖</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Basic Level (1 to 8)</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Foundational English medium literacy, hands-on science lab activities, moral civics, and Nepali roots.</p>
+</div>
+<div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+<span class="text-2xl">🎓</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Secondary Level (9–10 SEE)</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Targeted mentorship, mock board exams, computer coding, and uninterrupted 100% first-division legacy.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 2. ABOUT US SCREEN SECTION                                                -->
+<!-- ========================================================================= -->
+<section class="page-tab-content space-y-12" id="page-about">
+<!-- ABOUT HEADER -->
+<div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-800 text-white rounded-3xl p-6 sm:p-10 space-y-3 shadow-lg">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 backdrop-blur-md">
+<i class="w-3.5 h-3.5 text-amber-300" data-lucide="landmark"></i>
+<span class="">Established 2052 B.S. • Lamatar, Lalitpur</span>
+</div>
+<h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Our Story, Ethos &amp; Heritage</h1>
+<p class="text-sm sm:text-base text-blue-100 max-w-3xl leading-relaxed">
+          Nurturing young minds in the green, tranquil lap of Lamatar Hills with the timeless guiding compass of <strong class="text-white">"Love, Honesty and Service"</strong>.
+        </p>
+</div>
+<!-- PRINCIPAL'S ADDRESS -->
+<div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="space-y-4">
+<div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest flex items-center gap-1.5">
+<i class="w-4 h-4" data-lucide="feather"></i>
+<span class="">Executive Principal's Message</span>
+</div>
+<h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">
+            Gopal Krishna Shrestha
+          </h2>
+<blockquote class="italic text-sm sm:text-base text-slate-600 dark:text-slate-300 border-l-4 border-amber-400 pl-4 py-1 leading-relaxed">
+            “When we laid the foundation stone in 2052 B.S., our dream wasn’t just to erect another brick structure. We wanted to build a sanctuary where education feels like an extension of home — where kindness precedes competition, and moral courage is cherished above mere report cards.”
+          </blockquote>
+<p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+            Nestled amid the terraced hills of Lamatar, Valley Public School has stood steadfast for nearly thirty years. Our children do not breathe city fumes or navigate noisy ring-roads; they wake up to crisp Himalayan air, birdsong, and teachers who know each child by name, temper, and hidden brilliance.
+          </p>
+<div class="pt-2 flex items-center gap-2 text-xs font-bold text-blue-700 dark:text-blue-400">
+<i class="w-4 h-4 text-emerald-500" data-lucide="check-circle"></i>
+<span class="">Over 1,800 alumni guiding communities across Nepal and abroad</span>
+</div>
+</div>
+</div>
+<!-- FOUR PILLARS -->
+<div class="space-y-6">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Guiding Compass</span>
+<h2 class="text-2xl font-extrabold text-slate-900 dark:text-white">Our Core Pillars</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
+<div class="w-10 h-10 rounded-lg bg-pink-100 dark:bg-pink-950/60 text-pink-600 flex items-center justify-center">
+<i class="w-5 h-5" data-lucide="heart"></i>
+</div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Love &amp; Empathy</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Every child is embraced unconditionally, fostering kindness toward peers, elders, and nature.</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
+<div class="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-950/60 text-blue-600 flex items-center justify-center">
+<i class="w-5 h-5" data-lucide="shield"></i>
+</div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Honesty &amp; Integrity</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Truthfulness is modeled in everyday tasks. True triumph lies in honest effort rather than unearned praise.</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
+<div class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-950/60 text-amber-600 flex items-center justify-center">
+<i class="w-5 h-5" data-lucide="hands"></i>
+</div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Selfless Service</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Active participation in local Mahalaxmi community cleanliness drives, plantation, and civic support.</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
+<div class="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-950/60 text-purple-600 flex items-center justify-center">
+<i class="w-5 h-5" data-lucide="lightbulb"></i>
+</div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Lifelong Curiosity</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Encouraging questioning minds, experiential science laboratories, and creative reasoning.</p>
+</div>
+</div>
+</div>
+<!-- ODYSSEY TIMELINE -->
+<div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-slate-800 space-y-6">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Milestones</span>
+<h2 class="text-2xl font-extrabold text-slate-900 dark:text-white">Our Three-Decade Odyssey</h2>
+</div>
+<div class="space-y-6 relative before:absolute before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-800 pl-8">
+<div class="relative">
+<div class="absolute -left-[29px] top-1.5 w-3.5 h-3.5 rounded-full bg-blue-600 ring-4 ring-white dark:ring-slate-900"></div>
+<span class="text-xs font-bold text-blue-600 dark:text-blue-400">2052 B.S. (1996 A.D.) • Humble Genesis</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Foundation in Lamatar Valley</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Inaugurated with 35 enthusiastic rural learners and 4 educators dedicated to high quality schooling.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[29px] top-1.5 w-3.5 h-3.5 rounded-full bg-indigo-600 ring-4 ring-white dark:ring-slate-900"></div>
+<span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">2061 B.S. • Secondary Wing</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Expansion to Class 10</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Expanded premises with well-ventilated, sunny brick classrooms overlooking green terraced fields.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[29px] top-1.5 w-3.5 h-3.5 rounded-full bg-amber-500 ring-4 ring-white dark:ring-slate-900"></div>
+<span class="text-xs font-bold text-amber-500">2065 B.S. – Present • Board Legacy</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Uninterrupted 100% SEE Success</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Every single graduating batch achieving spotless pass records with prominent A and A+ grades.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[29px] top-1.5 w-3.5 h-3.5 rounded-full bg-emerald-600 ring-4 ring-white dark:ring-slate-900"></div>
+<span class="text-xs font-bold text-emerald-600">2078–2081 B.S. • Modern Era</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Digital Labs &amp; Experiential STEM</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">State-of-the-art interactive computer workstation lab, science lab upgrades, and indigenous botanical exploration.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 3. CAMPUS GALLERY SCREEN SECTION                                          -->
+<!-- ========================================================================= -->
+<section class="page-tab-content space-y-8" id="page-gallery">
+<div class="space-y-4">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Campus</span>
+<h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Valley Public School</h1>
+<p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Lamatar, Lalitpur</p>
+</div>
+<img alt="Valley Public School building in Lamatar, Lalitpur" class="w-full max-h-[34rem] rounded-3xl border border-slate-200 object-cover shadow-md dark:border-slate-800" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPFUFlgXe-2XzLjygDGYP_CCXBRBu4gGoqJNBQu3oYrZ4VN9No4oe6lRWmRmSXpGfRvccpa4YOTE0Psrn4aWYt6NLGIX1KM0oIrUG2phMFJjjG3Q3EfTadJn45fcFClClp_8L40qdAzOtbPwi-G8hKwc-jwRCQegd-0Mxj0JDRoVfTfYdMpiKo6DJd3ASaSX8pa0FpXhcJdQQ9ThpCxE37TiVfJP6qp6IZgr1Psww0b73zO7shHUU8kg">
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 4. CONTACTS & VISIT SCREEN SECTION                                        -->
+<!-- ========================================================================= -->
+<section class="page-tab-content space-y-12" id="page-contacts">
+<!-- CONTACT HEADER -->
+<div class="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 text-white rounded-3xl p-6 sm:p-10 space-y-3 shadow-lg">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 backdrop-blur-md">
+<i class="w-3.5 h-3.5 text-amber-300" data-lucide="map-pin"></i>
+<span class="">Lamatar Campus • Mahalaxmi Municipality</span>
+</div>
+<h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight">We Would Love to Welcome You to Our Family</h1>
+<p class="text-sm sm:text-base text-blue-100 max-w-3xl leading-relaxed">
+          Nestled at the foothills of Lamatar, Lalitpur, Valley Public School offers a peaceful, green environment where young minds blossom. Schedule a personal walkthrough, ask questions, or contact our front office.
+        </p>
+</div>
+<!-- QUICK TOUCH POINTS -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<a class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4 hover:border-blue-500 transition-colors" href="tel:015580355">
+<div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950 text-blue-600 flex items-center justify-center flex-shrink-0">
+<i class="w-5 h-5" data-lucide="phone"></i>
+</div>
+<div>
+<div class="text-xs font-semibold text-slate-500">Reception Desk</div>
+<div class="text-base font-bold text-slate-900 dark:text-white">01-5580355</div>
+<div class="text-[11px] text-emerald-600 font-medium">9:00 AM – 4:00 PM (Sun–Fri)</div>
+</div>
+</a>
+<a class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4 hover:border-emerald-500 transition-colors" href="https://wa.me/9779851234567" target="_blank">
+<div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center flex-shrink-0">
+<i class="w-5 h-5" data-lucide="message-circle"></i>
+</div>
+<div>
+<div class="text-xs font-semibold text-slate-500">Admissions WhatsApp</div>
+<div class="text-base font-bold text-slate-900 dark:text-white">+977 98512-34567</div>
+<div class="text-[11px] text-emerald-600 font-medium">Fast counselor replies</div>
+</div>
+</a>
+<a class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4 hover:border-indigo-500 transition-colors" href="mailto:valleypublicschool1996@gmail.com">
+<div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 flex items-center justify-center flex-shrink-0">
+<i class="w-5 h-5" data-lucide="mail"></i>
+</div>
+<div class="overflow-hidden">
+<div class="text-xs font-semibold text-slate-500">Official Email</div>
+<div class="text-xs font-bold text-slate-900 dark:text-white truncate">valleypublicschool1996@gmail.com</div>
+<div class="text-[11px] text-slate-500 font-medium">General inquiries</div>
+</div>
+</a>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-950 text-rose-600 flex items-center justify-center flex-shrink-0">
+<i class="w-5 h-5" data-lucide="map-pin"></i>
+</div>
+<div>
+<div class="text-xs font-semibold text-slate-500">Campus Address</div>
+<div class="text-sm font-bold text-slate-900 dark:text-white">Ward No. 9, Lamatar</div>
+<div class="text-[11px] text-slate-500 font-medium">Mahalaxmi Municipality, Lalitpur</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+<div class="flex items-center gap-2">
+<i class="w-5 h-5 text-blue-600" data-lucide="calendar"></i>
+<h2 class="text-lg font-extrabold text-slate-900 dark:text-white">Plan a Campus Visit</h2>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Call or email the school to ask about admissions and arrange a visit.</p>
+<div class="flex flex-wrap gap-3">
+<a class="inline-flex items-center gap-2 rounded-xl bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800" href="tel:015580355">
+<i class="w-4 h-4" data-lucide="phone"></i>
+Call the school
+</a>
+<a class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800" href="mailto:valleypublicschool1996@gmail.com">
+<i class="w-4 h-4" data-lucide="mail"></i>
+Send an email
+</a>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+<div class="flex items-center gap-2">
+<i class="w-5 h-5 text-emerald-600" data-lucide="map-pin"></i>
+<h2 class="text-lg font-extrabold text-slate-900 dark:text-white">Find the Campus</h2>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Ward No. 9, Lamatar, Mahalaxmi Municipality, Lalitpur.</p>
+<a class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800" href="https://maps.google.com/?q=Lamatar+Lalitpur+Nepal" target="_blank" rel="noopener noreferrer">
+Open Google Maps
+<i class="w-4 h-4" data-lucide="external-link"></i>
+</a>
+</div>
+</div>
+<!-- FREQUENT ADMISSIONS FAQS -->
+<div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+<h2 class="text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+<i class="w-5 h-5 text-blue-600" data-lucide="help-circle"></i>
+<span class="">Frequently Asked Admissions Questions</span>
+</h2>
+<div class="space-y-3">
+<details class="group border border-slate-200 dark:border-slate-800 rounded-xl p-4 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-slate-900 dark:text-white">
+<span class="">What are the school visiting and office hours?</span>
+<i class="w-4 h-4 transition group-open:rotate-180" data-lucide="chevron-down"></i>
+</summary>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              Our administrative and admissions help desk operates Sunday through Friday from 8:30 AM to 4:30 PM. Saturday remains closed except during scheduled open house admissions days.
+            </p>
+</details>
+<details class="group border border-slate-200 dark:border-slate-800 rounded-xl p-4 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-slate-900 dark:text-white">
+<span class="">Which documents are required for new enrollment?</span>
+<i class="w-4 h-4 transition group-open:rotate-180" data-lucide="chevron-down"></i>
+</summary>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              Parents should bring two passport-sized photographs of the student, a photocopy of the official birth certificate, previous grade marksheet / character certificate (for Grade 1 and above), and the completed campus enrollment form.
+            </p>
+</details>
+<details class="group border border-slate-200 dark:border-slate-800 rounded-xl p-4 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-slate-900 dark:text-white">
+<span class="">Are day-boarder facilities and hygienic hot lunch provided?</span>
+<i class="w-4 h-4 transition group-open:rotate-180" data-lucide="chevron-down"></i>
+</summary>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              Yes! We maintain an in-house canteen preparing fresh, balanced, vegetarian and non-vegetarian mid-day snacks and hot lunches supervised for nutritional hygiene. Supervised afternoon study hours are also available.
+            </p>
+</details>
+</div>
+</div>
+</section>
+</main>
+<!-- ================= APPLE ELEVATED FOOTER ================= -->
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-16 transition-colors">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+<!-- Top Footer Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+<!-- School Crest & Mission -->
+<div class="lg:col-span-2 space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-blue-700 text-white flex items-center justify-center font-extrabold">
+<i class="w-6 h-6 text-amber-300" data-lucide="graduation-cap"></i>
+</div>
+<div>
+<div class="font-extrabold text-lg text-blue-900 dark:text-blue-100">Valley Public School</div>
+<div class="text-xs text-slate-500"><em>"Love, Honesty and Service"</em> • Estd. 2052 B.S.</div>
+</div>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm">
+            An inclusive, homely learning sanctuary committed to academic excellence, creative exploration, and personal integrity in a serene campus environment nestled in Lamatar, Lalitpur.
+          </p>
+</div>
+<!-- Quick Links -->
+<div class="space-y-3">
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Quick Navigation</h4>
+<ul class="space-y-2 text-xs">
+<li class=""><button class="text-slate-500 hover:text-blue-600 dark:hover:text-blue-400" onclick="switchPage('home')">Home Portal</button></li>
+<li class=""><button class="text-slate-500 hover:text-blue-600 dark:hover:text-blue-400" onclick="switchPage('about')">Our Story &amp; Ethos</button></li>
+<li class=""><button class="text-slate-500 hover:text-blue-600 dark:hover:text-blue-400" onclick="switchPage('gallery')">Campus Photo Gallery</button></li>
+<li class=""><button class="text-slate-500 hover:text-blue-600 dark:hover:text-blue-400" onclick="switchPage('contacts')">Contact &amp; Visit Tour</button></li>
+</ul>
+</div>
+<!-- Academic Wings -->
+<div class="space-y-3">
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Academics</h4>
+<ul class="space-y-2 text-xs text-slate-500">
+<li class="">Pre-Primary (Playgroup – UKG)</li>
+<li class="">Basic Level (Classes 1 – 8)</li>
+<li class="">Secondary Level (Class 9 &amp; 10 SEE)</li>
+<li class="">Computer &amp; Experiential Labs</li>
+<li class="">Sports &amp; Inter-Valley Clubs</li>
+</ul>
+</div>
+<!-- Direct Contact Info -->
+<div class="space-y-3">
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Get In Touch</h4>
+<div class="space-y-2 text-xs text-slate-500">
+<p class="flex items-start gap-2">
+<i class="w-3.5 h-3.5 text-rose-500 flex-shrink-0 mt-0.5" data-lucide="map-pin"></i>
+<span class="">Ward No. 9, Lamatar, Mahalaxmi Municipality, Lalitpur</span>
+</p>
+<p class="flex items-center gap-2">
+<i class="w-3.5 h-3.5 text-blue-500 flex-shrink-0" data-lucide="phone"></i>
+<span class="">01-5580355</span>
+</p>
+<p class="flex items-center gap-2 truncate">
+<i class="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" data-lucide="mail"></i>
+<span class="truncate">valleypublicschool1996@gmail.com</span>
+</p>
+<p class="flex items-center gap-2 text-emerald-600">
+<i class="w-3.5 h-3.5 flex-shrink-0" data-lucide="clock"></i>
+<span class="">Sun – Fri: 8:30 AM – 4:30 PM</span>
+</p>
+</div>
+</div>
+</div>
+<!-- Bottom Legal & Accreditations -->
+<div class="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="">Affiliated with Ministry of Education &amp; National Examination Board (NEB), Nepal</span>
+</div>
+<div class="">
+          © 2026 Valley Public School. All rights reserved.
+        </div>
+</div>
+</div>
+</footer>
+<!-- ================= MOBILE APPLE DOCK TAB BAR ================= -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 px-3 py-2 flex items-center justify-around shadow-lg">
+<button class="mobile-tab-btn flex flex-col items-center gap-1 text-blue-700 dark:text-blue-400 font-bold transition-colors" data-tab="home" onclick="switchPage('home')">
+<i class="w-5 h-5" data-lucide="home"></i>
+<span class="text-[10px]">Home</span>
+</button>
+<button class="mobile-tab-btn flex flex-col items-center gap-1 text-slate-500 hover:text-blue-600 dark:text-slate-400 transition-colors" data-tab="about" onclick="switchPage('about')">
+<i class="w-5 h-5" data-lucide="book-open"></i>
+<span class="text-[10px]">About</span>
+</button>
+<button class="mobile-tab-btn flex flex-col items-center gap-1 text-slate-500 hover:text-blue-600 dark:text-slate-400 transition-colors" data-tab="gallery" onclick="switchPage('gallery')">
+<i class="w-5 h-5" data-lucide="image"></i>
+<span class="text-[10px]">Gallery</span>
+</button>
+<button class="mobile-tab-btn flex flex-col items-center gap-1 text-slate-500 hover:text-blue-600 dark:text-slate-400 transition-colors" data-tab="contacts" onclick="switchPage('contacts')">
+<i class="w-5 h-5" data-lucide="contact"></i>
+<span class="text-[10px]">Contacts</span>
+</button>
+</nav>
+<!-- ================= JAVASCRIPT: LOGIC & SEAMLESS APPLE INTERACTIONS ================= -->
+<script>
+  // 1. Initialize Icons & Theme
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+    initTheme();
+  });
+
+  // 2. Apple Segmented Tab Switcher
+  function switchPage(pageId) {
+    const pages = document.querySelectorAll('.page-tab-content');
+    pages.forEach(p => p.classList.remove('active'));
+
+    const targetPage = document.getElementById('page-' + pageId);
+    if (targetPage) {
+      targetPage.classList.add('active');
+    }
+
+    // Update Desktop Apple Segmented Control Pills
+    const desktopNavBtns = document.querySelectorAll('.nav-btn');
+    desktopNavBtns.forEach(btn => {
+      const target = btn.getAttribute('data-nav-target');
+      if (target === pageId) {
+        btn.className = "nav-btn px-4 py-1.5 rounded-full text-xs font-semibold tracking-tight transition-all duration-200 text-[#1D1D1F] dark:text-white bg-white dark:bg-[#2C2C2E] shadow-sm";
+      } else {
+        btn.className = "nav-btn px-4 py-1.5 rounded-full text-xs font-medium tracking-tight transition-all duration-200 text-[#86868B] hover:text-[#1D1D1F] dark:hover:text-white";
+      }
+    });
+
+    // Update Mobile Tab Navigation
+    const mobileTabBtns = document.querySelectorAll('.mobile-tab-btn');
+    mobileTabBtns.forEach(btn => {
+      const tab = btn.getAttribute('data-tab');
+      if (tab === pageId) {
+        btn.className = "mobile-tab-btn flex flex-col items-center gap-0.5 text-[#0071E3] font-semibold transition-colors";
+      } else {
+        btn.className = "mobile-tab-btn flex flex-col items-center gap-0.5 text-[#86868B] transition-colors";
+      }
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // 3. Apple iOS Switch & Dark Mode Controller
+  function initTheme() {
+    const isDark = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
+  function toggleTheme() {
+    const isCurrentlyDark = document.documentElement.classList.contains('dark');
+    if (isCurrentlyDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light';
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.theme = 'dark';
+    }
+    if (window.lucide) lucide.createIcons();
+  }
+
+</script>
+
+
+</body></html>
