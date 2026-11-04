@@ -9,7 +9,9 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-white/10 bg-black/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2 font-semibold text-white">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-brand-600 text-white">PV</span>
+          <span className="flex h-10 w-12 shrink-0 items-center justify-center overflow-hidden rounded-md border border-white/15 bg-white p-1 sm:h-11 sm:w-14">
+            <img src="/img/logo.jpeg" alt={`${school.name} logo`} className="h-full w-full object-contain" />
+          </span>
           <span className="hidden sm:inline">{school.name}</span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex">

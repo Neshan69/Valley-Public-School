@@ -9,6 +9,15 @@ export const school = {
   hours: "Sunday – Friday, 8:30 AM – 4:30 PM",
 };
 
+export const principalWelcome = {
+  heading: "A welcome from our Principal",
+  message: "[Principal's welcome message to be provided by the school.]",
+  name: "[Principal's name to be provided]",
+  designation: "Principal",
+  image: "/img/princile.jpeg",
+  imageAlt: "Portrait of the Valley Public School principal",
+};
+
 export const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
