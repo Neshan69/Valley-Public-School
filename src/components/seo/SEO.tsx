@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
 export function SEO({ title, description, path = "/" }: { title: string; description: string; path?: string }) {
-  const site = "https://example.com";
+  const site = typeof window === "undefined" ? "" : window.location.origin;
   return (
     <Helmet>
       <title>{title}</title>
